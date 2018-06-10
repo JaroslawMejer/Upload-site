@@ -14,16 +14,19 @@ exports.upload = function(request, response) {
 		imgName = files.upload.name
 		console.log(files.upload.name)
 		console.log(files.upload.name)
+		module.exports.imgName = files.upload.name
 		response.writeHead(200, {"Content-Type": "text/html"});
 		response.write("received image:<br/>");
 		response.write("<img src='/" + imgName + "'/>");
 		response.end();
+
 	});
 	form.uploadDir = './upload'
 	form.keepExtensions = true;
 	form.on('end', function(){
 		console.log(imgName)
 	})
+
 }
 
 exports.welcome = function(request, response) {
@@ -50,5 +53,3 @@ exports.show = function(request, response) {
 	});
 }
 
-
-exports.imgName = imgName

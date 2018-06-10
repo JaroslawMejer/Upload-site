@@ -3,11 +3,9 @@ var colors = require('colors');
 
 var handlers = require('./handlers')
 
-var imgName = handlers.imgName;
-
 function start() {
 	function onRequest(request, response) {
-		console.log("Odebrano zapytanie.".green);
+		console.log("Odebrano zapytanie.".green + handlers.imgName);
 		console.log('Zapytanie ' + request.url + ' odebrane.')
 		response.writeHead(200, {"Content-Type": "text/plain; charset=utf-8"});
 		
@@ -19,7 +17,7 @@ function start() {
 			case '/upload':
 				handlers.upload(request, response);
 				break;
-			case '/' + imgName:
+			case '/' + handlers.imgName:
 				handlers.show(request, response);
 				break;
 			default:
@@ -33,3 +31,4 @@ function start() {
 }
 
 exports.start = start;
+
